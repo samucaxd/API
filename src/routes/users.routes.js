@@ -11,7 +11,7 @@ function myMiddleware(request, response, next) {
   console.log(request.body)
 
   if(!request.body.isAdmin) {
-    return response.json({ message: "user without permissions" })
+    return response.json({ message: "Usuário sem permissões" })
   }
 
   next()

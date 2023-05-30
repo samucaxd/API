@@ -25,6 +25,10 @@ class UsersController {
       throw new AppError('Este e-mail já está cadastrado.')
     }
 
+    if(!username) {
+      throw new AppError("Nome é obrigatório!")
+    }
+
     const hashedPassword = await hash(password, 8)
 
     await database.run(`
@@ -42,8 +46,4 @@ class UsersController {
 module.exports = UsersController
 
 
-// if(!username) {
-//   throw new AppError("Nome é Obrigatório!")
-// }
 
-// response.status(201).json({ username, email, password });

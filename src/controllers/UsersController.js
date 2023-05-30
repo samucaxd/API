@@ -65,8 +65,8 @@ class UsersController {
       throw new AppError("Este e-mail já está em uso.")
     }
 
-    user.username = username
-    user.email = email
+    user.username = username ?? user.username
+    user.email = email ?? user.email
     
     if(password && !old_password) {
       throw new AppError("Você precisa informar a senha antiga para continuar.")
@@ -91,9 +91,9 @@ class UsersController {
       username = ?,
       email = ?,
       password = ?,
-      updated_at = ?
+      updated_at = DATETIME('now')
       WHERE id = ?`,
-      [user.username, user.email, user.password, new Date(), id]
+      [user.username, user.email, user.password, id]
     )
 
     return response.json()

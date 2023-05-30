@@ -20,6 +20,7 @@ function myMiddleware(request, response, next) {
 //Método POST:
 userRoutes.use(myMiddleware)
 userRoutes.post("/", usersController.create);
+userRoutes.put("/:id", usersController.update)
 
 //Export:
 module.exports = userRoutes;

@@ -49,14 +49,12 @@ class NotesController {
 
   async delete(request, response) {
     const { id } = request.params
-
     await knex("notes").where ({ id }).delete()
     return response.json()
   }
 
   async index(request, response) {
     const { title, user_id, tags } = request.query
-    
     let notes;
     
     if(tags) {
